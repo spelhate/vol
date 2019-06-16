@@ -11,6 +11,7 @@
 		</v-toolbar-items>
 	  </v-toolbar>
     <olMap></olMap>
+	<eData></eData>
 	<div class="text-xs-center">
 		<v-btn fab dark small color="primary">
 		  <v-icon dark>remove</v-icon>
@@ -41,9 +42,10 @@
 
 <script>
 import olMap from './components/olMap'
+import eData from './components/eData'
 export default {
   name: 'App',
-  components: {olMap},
+  components: {olMap, eData},
   data() {
     return {
       message: 'POC vuejs & Openlayers & Parcel',
