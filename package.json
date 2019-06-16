@@ -1,0 +1,34 @@
+{
+  "name": "vol",
+  "version": "1.0.0",
+  "description": "test vuejs & ol",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel index.html",
+    "build": "parcel build --public-url . index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spelhate/vol.git"
+  },
+  "author": "spelhate",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/spelhate/vol/issues"
+  },
+  "homepage": "https://github.com/spelhate/vol#readme",
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^3.0.0",
+    "parcel-bundler": "^1.12.3",
+    "stylus": "^0.54.5",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "dependencies": {
+    "components": "^0.1.0",
+    "ol": "^5.3.3",
+    "src": "^1.1.2",
+    "vue": "^2.6.10",
+    "vue-hot-reload-api": "^2.3.3"
+  }
+}
