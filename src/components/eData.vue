@@ -1,16 +1,18 @@
 <template>
-  <ul v-if="posts && posts.length">
-    <li v-for="post of posts">
-      <p><strong>{{post.title}}</strong></p>
-      <p>{{post.body}}</p>
-    </li>
-  </ul>
+  <v-layout row>
+    <v-flex xs12 sm6 offset-sm3>
+      <v-card v-if="posts && posts.length">
+          <v-list-tile v-for="post of posts" avatar>
+            <v-list-tile-content>
+              <v-list-tile-title>{{post.title}}</v-list-tile-title>
+              <v-list-tile-sub-title>{{post.body}}</v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+      </v-card>
+    </v-flex>
+  </v-layout>
 
-  <ul v-else-if="errors && errors.length">
-    <li v-for="error of errors">
-      {{error.message}}
-    </li>
-  </ul>
 </template>
 
 <script>
@@ -20,8 +22,7 @@ export default {
   name: "eData",
   data() {
     return {
-      posts: [],
-      errors: []
+      posts: []
     }
   },
 
@@ -33,9 +34,9 @@ export default {
       this.posts = response.data
     })
     .catch(e => {
-      this.errors.push(e)
+      console.lo(e)
     })
-   
+
   }
 }
 </script>
