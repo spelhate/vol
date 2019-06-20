@@ -1,4 +1,6 @@
 # vol
-test vuejs &amp; ol
+test vuejs, vuetify, axios &amp; ol
+
+`npm install`
 
 `npm start`
