@@ -80,6 +80,11 @@ export default {
       this.errors.push(e)
     })
 
+
+    shareBus.$on('featuresFiltered', (featuresIDs) => {
+        console.log("Ca bouge !", featuresIDs);
+    });
+
   }
 }
 </script>

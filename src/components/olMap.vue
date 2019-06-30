@@ -21,7 +21,9 @@
   export default {
     name: "olMap",
     data() { return {
-            features: []
+            features: [],
+            source: null,
+            map: null
         }
     },
     mounted() {
@@ -33,13 +35,21 @@
        var vectorLayer = new VectorLayer({
         source: vectorSource
       });
-      map.addLayer(vectorLayer);
+
+      this.source = vectorSource;
+
+      this.map.addLayer(vectorLayer);
       var extent = vectorSource.getExtent();
-      map.getView().fit(extent, map.getSize());
+      this.map.getView().fit(extent, this.map.getSize());
+      this.map.on('moveend', this.updateExtent);
+
+
+
+
       });
 
 
-      let map = new Map({
+      this.map = new Map({
         target: 'map',
         controls: defaultControls().extend([
           new ZoomToExtent({
@@ -56,8 +66,26 @@
           center: [0, 0],
           zoom: 2
         })
-      })
-    }
+      });
+
+
+    },
+
+    methods: {
+        updateExtent: function() {            console.log('Howdy my good fellow!');
+            var extent = this.map.getView().calculateExtent(this.map.getSize());
+            console.log(extent);
+            var filteredIDs = [];
+            this.source.forEachFeatureInExtent(extent, function (feature) {
+                filteredIDs.push(feature.getProperties().code_rne);
+            });
+
+            shareBus.$emit('featuresFiltered', filteredIDs);
+
+
+
+        }
+      }
   }
 </script>
 
