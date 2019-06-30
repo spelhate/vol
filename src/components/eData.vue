@@ -64,12 +64,12 @@ export default {
 
   // Fetches posts when the component is created.
   created() {
-    var src = "https://ows.region-bretagne.fr/geoserver/rb/wfs?SERVICE=WFS&VERSION=1.0.0&REQUEST=GETFEATURE&TYPENAME=lycee&outputFormat=application/json&srsName=EPSG:4326";
+    var src = "https://ows.region-bretagne.fr/geoserver/rb/wfs?SERVICE=WFS&VERSION=1.0.0&REQUEST=GETFEATURE&TYPENAME=lycee&outputFormat=application/json&srsName=EPSG:3857";
     axios.get(src)
     .then(response => {
       // JSON responses are automatically parsed.
       this.features = response.data.features;
-      shareBus.$emit('featuresLoaded', this.features);
+      shareBus.$emit('featuresLoaded', response.data);
     })
     .catch(e => {
       this.errors.push(e)
