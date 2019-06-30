@@ -12,11 +12,8 @@
 
             >
               <v-card>
-                <v-img
-                  :src="feature.properties.photo"
-                  height="200px"
-                >
-                  <v-container
+                <v-img v-if="feature.properties.photo" :src="feature.properties.photo" height="200px" >
+                 <v-container
                     fill-height
                     fluid
                     pa-2
@@ -68,8 +65,16 @@ export default {
     axios.get(src)
     .then(response => {
       // JSON responses are automatically parsed.
-      this.features = response.data.features;
-      shareBus.$emit('featuresLoaded', response.data);
+      var _fixed = response.data;
+      //Fix no photo link
+      _fixed.features.forEach(function(f) {
+      console.log(f.properties.photo);
+        if (!f.properties.photo) {
+            f.properties.photo = "https://www.bretagne-economique.com/sites/default/files/styles/actualites/public/geo_bretagne_1.jpg";
+        }
+      });
+      this.features = _fixed.features;
+      shareBus.$emit('featuresLoaded', _fixed);
     })
     .catch(e => {
       this.errors.push(e)
