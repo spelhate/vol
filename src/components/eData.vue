@@ -25,7 +25,6 @@
                     </v-layout>
                   </v-container>
                 </v-img>
-
                 <v-card-actions>
                   <v-spacer></v-spacer>
                   <v-btn icon>
@@ -56,6 +55,7 @@ export default {
     return {
       features: [],
       errors: []
+
     }
   },
 
@@ -77,9 +77,8 @@ export default {
       shareBus.$emit('featuresLoaded', _fixed);
     })
     .catch(e => {
-      this.errors.push(e)
+      console.lo(e)
     })
-
 
     shareBus.$on('featuresFiltered', (featuresIDs) => {
         console.log("Ca bouge !", featuresIDs);
