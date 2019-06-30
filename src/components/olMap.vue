@@ -9,10 +9,22 @@
   import TileLayer from 'ol/layer/Tile.js'
   import {defaults as defaultControls, ZoomToExtent} from 'ol/control.js';
   import OSM from "ol/source/OSM"
+  import { shareBus } from '../main';
+
 
   export default {
     name: "olMap",
+    data() { return {
+            features: []
+        }
+    },
     mounted() {
+      shareBus.$on('featuresLoaded', (features) => {
+       this.features = features;
+       console.log("olmap", this.features);
+      });
+
+
       let map = new Map({
         target: 'map',
         controls: defaultControls().extend([
@@ -39,4 +51,4 @@
   @import "ol/ol.css"
   #map
     height 100%;
-</style> 
+</style>

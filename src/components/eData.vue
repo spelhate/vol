@@ -51,6 +51,7 @@
 </template>
 <script>
 import axios from 'axios';
+import { shareBus } from '../main';
 
 export default {
   name: "eData",
@@ -68,6 +69,7 @@ export default {
     .then(response => {
       // JSON responses are automatically parsed.
       this.features = response.data.features;
+      shareBus.$emit('featuresLoaded', this.features);
     })
     .catch(e => {
       this.errors.push(e)

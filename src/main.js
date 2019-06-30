@@ -6,6 +6,8 @@ import 'vuetify/dist/vuetify.min.css'
 
 Vue.use(Vuetify)
 
+export const shareBus = new Vue();
+
 new Vue({
   el: '#app',
   render: function (createElement) {

@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import { shareBus } from './main';
 import olMap from './components/olMap'
 import eData from './components/eData'
 export default {
