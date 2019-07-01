@@ -82,6 +82,16 @@ export default {
 
     shareBus.$on('featuresFiltered', (featuresIDs) => {
         console.log("Ca bouge !", featuresIDs);
+        var _callback = function(elem, ind, Ar) {
+            var ret =false;
+            if (featuresIDs.indexOf(elem.properties.code_rne) > -1) {
+                ret =true;
+            }
+            return ret;
+        };
+        var _filtered = this.features.filter(_callback);
+        console.log (_filtered);
+        this.features = _filtered;
     });
 
   }
