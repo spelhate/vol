@@ -56,6 +56,7 @@
 </template>
 <script>
 import axios from 'axios';
+import Fuse from 'fuse.js';
 import { shareBus } from '../main';
 
 export default {
