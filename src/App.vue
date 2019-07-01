@@ -1,5 +1,5 @@
 <template>
-  <div class="container">    
+  <div class="container">
 	<v-toolbar>
 		<v-toolbar-side-icon></v-toolbar-side-icon>
 		<v-toolbar-title>{{ message }}</v-toolbar-title>
@@ -10,8 +10,10 @@
 		  <v-btn flat>Link Three</v-btn>
 		</v-toolbar-items>
 	  </v-toolbar>
-    <olMap></olMap>
-	<eData></eData>
+    <div class="layout row wrap">
+        <olMap></olMap>
+        <eData></eData>
+    </div>
 	<div class="text-xs-center">
 		<v-btn fab dark small color="primary">
 		  <v-icon dark>remove</v-icon>
@@ -56,7 +58,7 @@ export default {
 </script>
 
 <style scoped>
-  .container {	
+  .container {
     font-family: Roboto;
     width: 100%;
     height: 100%;

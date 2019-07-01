@@ -1,5 +1,5 @@
 <template>
-  <div id="map"></div>
+  <div id="map" class="flex xs6 md6"></div>
 </template>
 
 <script>

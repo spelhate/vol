@@ -1,7 +1,17 @@
 <template>
-  <v-layout justify-center>
-    <v-flex xs12 sm12>
+    <v-flex xs6 sm6>
       <v-card>
+      <v-toolbar color="cyan" dark>
+          <v-toolbar-side-icon></v-toolbar-side-icon>
+
+          <v-toolbar-title>Inbox</v-toolbar-title>
+
+          <v-spacer></v-spacer>
+
+          <v-btn icon @click="test('coucou')">
+            <v-icon>search</v-icon>
+          </v-btn>
+        </v-toolbar>
         <v-container
           fluid
           grid-list-md
@@ -43,7 +53,6 @@
         </v-container>
       </v-card>
     </v-flex>
-  </v-layout>
 </template>
 <script>
 import axios from 'axios';
@@ -54,6 +63,7 @@ export default {
   data() {
     return {
       features: [],
+      store: [],
       errors: []
 
     }
@@ -68,13 +78,13 @@ export default {
       var _fixed = response.data;
       //Fix no photo link
       _fixed.features.forEach(function(f) {
-      console.log(f.properties.photo);
         if (!f.properties.photo) {
             f.properties.photo = "https://www.bretagne-economique.com/sites/default/files/styles/actualites/public/geo_bretagne_1.jpg";
         }
       });
+      this.store = _fixed; /*Store complete collection*/
       this.features = _fixed.features;
-      shareBus.$emit('featuresLoaded', _fixed);
+      shareBus.$emit('featuresLoaded', this.store);
     })
     .catch(e => {
       console.lo(e)
@@ -89,12 +99,17 @@ export default {
             }
             return ret;
         };
-        var _filtered = this.features.filter(_callback);
+        var _filtered = this.store.features.filter(_callback);
         console.log (_filtered);
         this.features = _filtered;
     });
 
-  }
+  },
+   methods: {
+        test: function(s) {
+            alert(s);
+        }
+   }
 }
 </script>
 
